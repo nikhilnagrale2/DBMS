@@ -1,6 +1,6 @@
 # DBMS
 
-## Note - This notes are made from videos of Sanchit Jain Youtube (Knowledge Gate). I will really suggest to watch those videos because he explained all these really well and funny way. I can guarantee that you will not get bored at any point.
+## Note - This notes are made from videos of Sanchit Jain Youtube (Knowledge Gate). I will really suggest to watch those videos because he explained all these really well. I can guarantee that you will not get bored at any point.
 
 1. E-R Diagram
 2. Conversion of E-R diagram into relational model
@@ -45,5 +45,29 @@
 | Size | TB, PB | MB, GB |
 | who | CEO MD GM | clerks, managers |
 | Operations | Read | Read/Write |
+
+---
+
+## Entity Relationship Diagram
+
+1. Introduction and Basics
+2. Entity and Entity Set
+3. Attributes and types
+4. Relationship
+5. Strong and weak Entity Set
+6. Traps
+7. Conversion
+
+### Introduction and Basics
+
+1. Introduced by Dr. Peter Chen in 1976
+2. A non-technical design method works on conceptual level based on the perception of real world
+3. Consists of Collection of basic objects called entities and of relationship among there objects and attributes which defines their properties. 
+4. Free from ambiguties and provides a standard and logical way of visualizing data
+5. Basically it is a diagrammatic representation easy to understand even by non-technical user.
+![Entity Relationship Model]('https://miro.medium.com/max/700/1*jnG2OLB8Zc9DveIfbx9vRw.png')
+
+
+
 
 
