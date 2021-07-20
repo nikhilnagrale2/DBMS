@@ -120,3 +120,14 @@
 - Most of relationship sets in the ER diagram are binary. Occasionally however relationship sets involve more than two entity sets.
 - eg. Binary, Ternary, Quaternary, N-ary
 
+### Cardinality Ratio and Mapping Cardinalities
+
+1. Express the number of entities to which other entity can be related via a relationship.
+2. can be used in decscribing relationship set of any degree but is most useful in binary relationship.
+3. Mapping Cardinalities
+   - One to One
+   - One to Many
+   - Many to One
+   - Many to Many
+
+- Every one to one relationship is also a one to many and many to one, many to many relationship
