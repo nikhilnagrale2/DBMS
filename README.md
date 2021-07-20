@@ -16,7 +16,26 @@
 ## Basic Fundamentals
 
 ### Difference between Data Information Database 
+
 1. Data - Raw and Isolated facts about an entity (recorded). eg. text, audio, video, image, map, etc.
 2. Information - Processed, meaningful, usable data
 3. Database - Collection of similar / related data
 4. DBMS - used to create, manipulate and delete data
+
+### Disadvantage of File Processing in DBMS
+
+#### Disadvatage of file system
+
+1. Data Redundancy - Data redundancy occurs when the same piece of data exists in multiple places
+2. Data Inconsistency - Data inconsistency is when the same data exists in **different** formats in multiple tables
+3. Difficulty in Accessing Data
+4. Data Isolation - This problem arises due to the scattering of data in various files with various formats.
+5. Security Problem - Read, Edit, View etc
+6. Atomicity Problem - Atomicity is a feature of databases systems dictating where a transaction must be all-or-nothing. That is, the transaction must either fully happen, or not happen at all. It must not complete partially.
+7. Concurrent Access Anomalies - Anomalies occur when changes made by one user gets lost because of changes made by other user.
+8. Integrity Problem - Data integrity is the maintenance of, and the assurance of, data accuracy and consistency over its entire life-cycle and is a critical aspect to the design, implementation, and usage of any system that stores, processes, or retrieves data
+
+
+
+
+
