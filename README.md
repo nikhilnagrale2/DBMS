@@ -22,9 +22,7 @@
 3. Database - Collection of similar / related data
 4. DBMS - Software used to create, manipulate and delete data
 
-### Disadvantage of File Processing in DBMS
-
-#### Disadvatage of file system
+### Disadvantage of File System
 
 1. Data Redundancy - Data redundancy occurs when the same piece of data exists in multiple places
 2. Data Inconsistency - Data inconsistency is when the same data exists in different formats in multiple tables
@@ -37,7 +35,7 @@
 
 ### OLAP VS OLTP
 
-|            | Online Analytical Processing | Online Transaction Processing | 
+|            | Online Analytical Processing | Online Transaction Processing |
 | ---------- | ---------------------------- | ----------------------------- |
 | type       | Historical Data              | Current Data                  |
 | purpose    | Subject Oriented             | Application Oriented          |
@@ -65,7 +63,8 @@
 3. Consists of Collection of basic objects called entities and of relationship among there objects and attributes which defines their properties.
 4. Free from ambiguties and provides a standard and logical way of visualizing data
 5. Basically it is a diagrammatic representation easy to understand even by non-technical user.
-   ![Entity Relationship Model](https://miro.medium.com/max/700/1*jnG2OLB8Zc9DveIfbx9vRw.png)
+
+![Entity Relationship Model](https://miro.medium.com/max/700/1*jnG2OLB8Zc9DveIfbx9vRw.png)
 
 ### Entity, Entity Sets and its types
 
@@ -73,14 +72,29 @@
 
 2. Types of Entities :-
 
-- Tangible: Entities which physically exist in real world eg. Car, Pen, BankLocker
-- Intangible: Entities which exists logically eg. Account
+   - Tangible: Entities which physically exist in real world eg. Car, Pen, BankLocker
+   - Intangible: Entities which exists logically eg. Account
 
 3. Entity Sets - Collection/Set of same types of entities ie. that show same properties or attributes called entity set.
 
-### Entity ER diagram and relationship model
+### ER diagram and relationship model
 
 | ER diagram                                                               | Relational Model                                                        |
 | ------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
 | 1. Entity can not be represented in an ER diagram as it is instance/data | 1. Entity can be represented in an relational model by row/tuple/record |
 | 2. Entity set is represented by rectangle in ER diagram.                 | 2. Entity set in represnted by table in relational model.               |
+
+### Attributes
+
+- Attributes - are the units that describe the characteristics of entities.
+
+1. For each attribute there is a set of permitted values called domains (ex- roll no should be numeric).
+2. In ER diagram represented by ellipse or oval, while in relational model by a separate column.
+
+#### Types of Attributes
+
+| Sr. No. | Simple-Composite                                                                                | Single-Multivalued                                                                                                                                     | Stored-Derived                                                                                                                  |
+| ------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
+| 1.      | Simple cannot be divided further, represented by simple oval                                    | Single can have only one value at a instance of time (eg. college ID)                                                                                  | Stored how value is stored in the data base, represented by simple oval                                                         |
+| 2.      | Composite can not be divided further simple attributes, represented by oval connected to a oval | Multivalued can have more than one value at a instance of time (eg. Email), represented by double oval, need to create separate table with primary key | Derived how value can be computed in run time using stored attribute, represented by dotted attribute (age calculated from dob) |
+
