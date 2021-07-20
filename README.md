@@ -151,3 +151,55 @@
 
 1. Partial Participation - Not all entities are involved in the relationship. Partial participation is represented by single lines.
 2. Total Participation - Each entity is involved in the relationship. Total participation is represented by double lines
+
+---
+
+## Functional Dependency
+
+1. Functional Dependencies, Keys
+2. Normalization
+3. Indexing, Physical Structures
+4. Transaction
+
+### Functional Dependencies, Keys
+
+- **Functional Dependencies**
+- The functional dependency is a relationship that exists between two attributes. It typically exists between the primary key and non-key attribute within a table.
+- X → Y
+- The left side of FD is known as a determinant, the right side of the production is known as a dependent.
+
+### Types of Functional dependency
+
+1. Trivial functional dependency
+   A → B has trivial functional dependency if B is a subset of A.
+   The following dependencies are also trivial like: A → A, B → B
+2. Non-trivial functional dependency
+   A → B has a non-trivial functional dependency if B is not a subset of A.
+   When A intersection B is NULL, then A → B is called as complete non-trivial.
+
+### Closure of Attribute Set
+
+- Attribute closure of on attribute set A can be defined as a set of attribute which can be functionally determined from it denoted by F^+.
+
+### Armstrong's Axiom/Rule
+
+- Armstrong axioms holds on every relational database can be used to generate closure set
+
+### Primary Rules (RAT)
+
+```ruby
+Reflexivity : if Y is subset of X, then X -> Y
+Augmentation : if X -> Y, then XZ -> YZ
+Transitivity : if X -> Y && Y -> Z, then X -> Z
+```
+
+### Secondary Rules
+
+```ruby
+Union : if X -> Y && X -> Z, then X -> YZ
+Decomposition : if X -> YZ, then X -> Y && X -> Z
+Pseudo_Transitivity : if X -> Y && WY -> Z, then WX -> Z
+Composition : if X -> Y && Z -> W then XZ -> YW
+```
+
+###
