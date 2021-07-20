@@ -98,3 +98,20 @@
 | 1.      | Simple cannot be divided further, represented by simple oval                                    | Single can have only one value at a instance of time (eg. college ID)                                                                                  | Stored how value is stored in the data base, represented by simple oval                                                         |
 | 2.      | Composite can not be divided further simple attributes, represented by oval connected to a oval | Multivalued can have more than one value at a instance of time (eg. Email), represented by double oval, need to create separate table with primary key | Derived how value can be computed in run time using stored attribute, represented by dotted attribute (age calculated from dob) |
 
+
+### Relationship in a ER Diagram
+
+- **Relationship** - is an association between two or more entities of same or different entity set.
+
+1. No representation in ER diagram as it is an instance or data.
+2. In relational model represented either using a row in a table.
+
+- **Relationship type/set** - A set of similar type of relationship
+
+1. In ER diagram represented by a diamond
+2. In relational model either by a separate table or by separate column (foreign key)
+3. Every relationship type has three components
+   - Name
+   - Degree
+   - Cardinality ratio/Participation Constraints
+
