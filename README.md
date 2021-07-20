@@ -131,3 +131,23 @@
    - Many to Many
 
 - Every one to one relationship is also a one to many and many to one, many to many relationship
+
+### Participation Constraints
+
+- **Participation Constraints**
+
+1. Specifies weather the existance of an entity depends on its being related to another entity via a relationship type
+2. these constraints specify the minimum and maximum number of relationship instance that each entity can/must participates in.
+
+- **Max Cardinality**
+
+1. It defines the maximum number of times on entity occurence participating in a relationship.
+
+- **Min Cardinality**
+
+1. It defines the minimum number of times on entity occurence participating in a relationship.
+
+- **Types of Participation**
+
+1. Partial Participation - Not all entities are involved in the relationship. Partial participation is represented by single lines.
+2. Total Participation - Each entity is involved in the relationship. Total participation is represented by double lines
