@@ -35,7 +35,15 @@
 7. Concurrent Access Anomalies - Anomalies occur when changes made by one user gets lost because of changes made by other user.
 8. Integrity Problem - Data integrity is the maintenance of, and the assurance of, data accuracy and consistency over its entire life-cycle and is a critical aspect to the design, implementation, and usage of any system that stores, processes, or retrieves data
 
+### OLAP VS OLTP
 
-
+| | Online Analytical Processing | Online Transaction Processing |
+| --- | --- | --- |
+| type | Historical Data | Current Data |
+| purpose |  Subject Oriented | Application Oriented |
+| use | decision making | day to day operations |
+| Size | TB, PB | MB, GB |
+| who | CEO MD GM | clerks, managers |
+| Operations | Read | Read/Write |
 
 
