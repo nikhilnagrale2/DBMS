@@ -98,7 +98,6 @@
 | 1.      | Simple cannot be divided further, represented by simple oval                                    | Single can have only one value at a instance of time (eg. college ID)                                                                                  | Stored how value is stored in the data base, represented by simple oval                                                         |
 | 2.      | Composite can not be divided further simple attributes, represented by oval connected to a oval | Multivalued can have more than one value at a instance of time (eg. Email), represented by double oval, need to create separate table with primary key | Derived how value can be computed in run time using stored attribute, represented by dotted attribute (age calculated from dob) |
 
-
 ### Relationship in a ER Diagram
 
 - **Relationship** - is an association between two or more entities of same or different entity set.
@@ -114,4 +113,10 @@
    - Name
    - Degree
    - Cardinality ratio/Participation Constraints
+
+### Degree of a relationship in a ER diagram
+
+- **Degree of a Relationship Set** - means the number of entity set associated (participated) in the relationship set.
+- Most of relationship sets in the ER diagram are binary. Occasionally however relationship sets involve more than two entity sets.
+- eg. Binary, Ternary, Quaternary, N-ary
 
