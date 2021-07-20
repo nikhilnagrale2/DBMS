@@ -68,6 +68,25 @@
 ![Entity Relationship Model]('https://miro.medium.com/max/700/1*jnG2OLB8Zc9DveIfbx9vRw.png')
 
 
+### Entity, Entity Sets and its types
+
+1. Entity - An entity is a thing or an object in the real world that is distinguishable from other objects based on the values of the attributes it possess.
+
+2. Types of Entities :-
+  + Tangible: Entities which physically exist in real world eg. Car, Pen, BankLocker
+  + Intangible: Entities which exists logically eg. Account
+
+3. Entity Sets - Collection/Set of same types of entities ie. that show same properties or attributes called entity set.
+
+### Entity ER diagram and relationship model
+| ER diagram | Relational Model |
+| --- | --- |
+| 1. Entity can not be represented in an ER diagram as it is instance/data
+2. Entity set is represented by rectangle in ER diagram. | 1. Entity can be represented in an relational model by row/tuple/ record
+2. Entity set in represnted by table in relational model. |
+
+
+
 
 
 
