@@ -46,7 +46,7 @@
 
 ---
 
-## Entity Relationship Diagram
+## 1. Entity Relationship Diagram
 
 1. Introduction and Basics
 2. Entity and Entity Set
@@ -154,7 +154,7 @@
 
 ---
 
-## Functional Dependency
+## 3. Functional Dependency
 
 1. Functional Dependencies, Keys
 2. Normalization
@@ -199,7 +199,34 @@ Transitivity : if X -> Y && Y -> Z, then X -> Z
 Union : if X -> Y && X -> Z, then X -> YZ
 Decomposition : if X -> YZ, then X -> Y && X -> Z
 Pseudo_Transitivity : if X -> Y && WY -> Z, then WX -> Z
-Composition : if X -> Y && Z -> W then XZ -> YW
+Composition : if X -> Y && Z -> W, then XZ -> YW
 ```
 
-### Equivalence of Functional Dependency
+### Equivalency of Functional Dependency
+
+---
+
+### Canonical Cover, Minimal Set, Irreducible set of FD
+
+---
+
+## 4. Types of Keys
+
+### **Keys**
+
+- A key in DBMS is an attribute or a set of attributes that help to uniquely identify a tuple (or row) in a relation (or table). Keys are also used to establish relationships between the different tables and columns of a relational database. Individual values in a key are called key values.
+
+### **Super Key**
+
+- Super Key is the set of all the keys which help to identify rows in a table uniquely. This means that all those columns of a table than capable of identifying the other columns of that table uniquely will all be considered super keys. Super Key is the superset of a candidate key
+
+### **Candidate Key**
+
+- Candidate keys are those attributes that uniquely identify rows of a table. The Primary Key of a table is selected from one of the candidate keys. So, candidate keys have the same properties as the primary keys. There can be more than one candidate keys in a table.
+
+### **Primary Key**
+
+- A primary key is a column of a table or a set of columns that helps to identify every record present in that table uniquely. There can be only one primary Key in a table. Also, the primary Key cannot have the same values repeating for any row. Every value of the primary key has to be different with no repetitions.
+
+- The PRIMARY KEY (PK) constraint put on a column or set of columns will not allow them to have any null values or any duplicates. One table can have only one primary key constraint. Any value in the primary key cannot be changed by any foreign keys which refer to it.
+
