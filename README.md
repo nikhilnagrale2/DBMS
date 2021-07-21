@@ -260,3 +260,11 @@ Composition : if X -> Y && Z -> W, then XZ -> YW
 
 - ### Updation/Modification Anomalies
   - When we want to update a single piece of data, but it must be done all of its copies.
+
+### Normalization
+
+- As one paragraph contains a singel idea similary are table must contain direct & main data about on Entity.
+- Normalization (Decomposition of tables) of table is done on the basis of functional dependencies.
+- Normalization is a process which we use to remove redundancy.
+
+### 1NF First Noraml Form
