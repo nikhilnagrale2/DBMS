@@ -230,3 +230,33 @@ Composition : if X -> Y && Z -> W, then XZ -> YW
 
 - The PRIMARY KEY (PK) constraint put on a column or set of columns will not allow them to have any null values or any duplicates. One table can have only one primary key constraint. Any value in the primary key cannot be changed by any foreign keys which refer to it.
 
+---
+
+## 5. Normalization
+
+### Insertion Deletion and Updation
+
+- ### Idea
+
+  - In the table student info we have tried to store entire data about student.
+
+- ### Result
+
+  - Entire branch date of a branch must be repeated for every student of the branch
+
+- ### Disadvantages
+
+  1. Insertion, Deletion and Modification Anomalies
+  2. Inconsitency (data)
+  3. Increase in database size and increase in time (slow)
+
+- ### Insertion anomalies
+
+  - When certain data (attribute) cannot be inserted into database, without the presence of other data.
+
+- ### Deletion anomalies
+
+  - If we delete some data (unwanted), it cause deletion of some other data (wanted)
+
+- ### Updation/Modification Anomalies
+  - When we want to update a single piece of data, but it must be done all of its copies.
