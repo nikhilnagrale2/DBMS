@@ -202,4 +202,4 @@ Pseudo_Transitivity : if X -> Y && WY -> Z, then WX -> Z
 Composition : if X -> Y && Z -> W then XZ -> YW
 ```
 
-###
+### Equivalence of Functional Dependency
