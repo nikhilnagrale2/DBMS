@@ -306,4 +306,19 @@ Composition : if X -> Y && Z -> W, then XZ -> YW
   Sometimes BCNF is also referred as 3.5 Normal Form.
   - Every A->B, A must be SuperKey, if it is then BCNF
 
-### Lossless join Decomposition
+### Lossless join Decomposition/ Non-Additive
+
+- This property guarantees that the extra or less tuple generation problem does not occur after decomposition.
+- It is mandatory property must always holds good.
+- If a relation R is decomposed into two relative R1 R2 then it will be loss-less iff
+  1. attr(R1) U attr(R2) = attr(R)
+  2. attr(R1) intersection attr(R2) not equal phi
+  3. attr(R1) intersection attr(R2) -> attr(R1) or
+     attr(R1) intersection attr(R2) -> attr(R2)
+
+### Dependency Preserving Decomposition
+
+- If a table R having FD set F, is decomposed into two tables R1 and R2 having FD set F1 and F2 then
+  F1 subset of F+
+  F2 subset of F+
+  (F1UF2)+ = F+
