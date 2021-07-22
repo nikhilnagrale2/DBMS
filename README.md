@@ -268,3 +268,42 @@ Composition : if X -> Y && Z -> W, then XZ -> YW
 - Normalization is a process which we use to remove redundancy.
 
 ### 1NF First Noraml Form
+
+- A table is said to be in first normal form if very cell contain atomic value.
+- Each table cell should contain a single value.
+- Each record needs to be unique.
+
+### 2NF Second Normal Form
+
+- Rule 1- Be in 1NF
+- Rule 2- Single Column Primary Key that does not functionally dependant on any subset of candidate key relation. It must not have partial dependency.
+
+  ### Prime Non-Prime Attribute
+
+  - An attribute that is not part of any candidate key is known as non-prime attribute. An attribute that is a part of one of the candidate keys is known as prime attribute
+
+  ### Partial Dependency
+
+  - Partial Dependency occurs when a non-prime attribute is functionally dependent on **part** of a candidate key. The 2nd Normal Form (2NF) eliminates the Partial Dependency.
+
+### 3NF Third Normal Form
+
+- Rule 1- Be in 2NF
+- Rule 2- Has no transitive functional dependencies
+
+  ### Transitive Dependency:
+
+  - A functional dependency from A->B is called if A->B belongs to non-prime.
+
+- Every Dependency from A->B must follow this rules to be in 3rd Normal Form
+  1. Either A is superkey
+  2. or B is a prime attribute
+
+### BCNF
+
+- BCNF (Boyce-Codd Normal Form)
+  Even when a database is in 3rd Normal Form, still there would be anomalies resulted if it has more than one Candidate Key.
+  Sometimes BCNF is also referred as 3.5 Normal Form.
+  - Every A->B, A must be SuperKey, if it is then BCNF
+
+### Lossless join Decomposition
