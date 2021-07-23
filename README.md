@@ -529,3 +529,52 @@ Relational Algebra and Relational Calculus = SQL
 - OrderBy clause causes the tuple in the result of a query to appear in sorted order
 - By default order by clause lists items in ascening order we may specify asc for ascending order and desc for descending order.
 - ordering can be performed on multiple attribute ie. if there is a tie on the first attribute we sorted according to second attribute.
+
+## 7. Indexing and Physical Structure (B, B+ Tree)
+
+### File Structure
+
+| Sorted File                                               | Unsorted File                                    |
+| --------------------------------------------------------- | ------------------------------------------------ |
+| can be sorted only accoding to one attribute (Search Key) | Random order, any record can be placed any where |
+| Searching fast                                            | Searching will be slow                           |
+| Insertion and Deletion will be difficult                  | Insertion and Deletion will be easy.             |
+
+### Indexing
+
+### Types of Indexing
+
+1. Primary Indexing
+2. Clustered Indexing
+3. Secondary Indexing
+4. Multi-level Indexing is possible (B Tree, B+ Tree)
+
+Sparse Dense Indexing
+
+### Primary Indexing
+
+- Main file sorted.
+- Primary key is used as anchor attribute(Search Key)
+- Example of Sparse Indexing
+- no. of entries = no of blocks acquired in index file of the main file
+- no. of access required = Logn+1
+
+```cpp
+blockingFactor = floor(blockSize / recordSize);
+noOfBlocksForMainFile = ceil(noOfRecordsInMainFile / blockingFactor);
+noOfBlockAccessRequired = ceil(log(n));
+```
+
+### Clustered Indexing
+
+- Main file is sorted (on some non-key attribute) (SparseDense)
+- There will be one entry for each unique value of the non-attribute.
+- if number of block acquired by Index file is n, then block access required will be logN+1
+
+### Secondary Indexing
+
+- Main file is unsorted
+- Can be done on key as well as on non-key attributes
+- called secondary because normally one indexing is already done.
+- example of dense indexing = [ no of entry in index file = no of entry in main file]
+- no of block access = ceil(logn)+1
