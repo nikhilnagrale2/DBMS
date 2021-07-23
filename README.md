@@ -306,4 +306,226 @@ Composition : if X -> Y && Z -> W, then XZ -> YW
   Sometimes BCNF is also referred as 3.5 Normal Form.
   - Every A->B, A must be SuperKey, if it is then BCNF
 
-### Lossless join Decomposition
+## 6. Lossless join Decomposition/ Non-Additive
+
+- This property guarantees that the extra or less tuple generation problem does not occur after decomposition.
+- It is mandatory property must always holds good.
+- If a relation R is decomposed into two relative R1 R2 then it will be loss-less iff
+  1. attr(R1) U attr(R2) = attr(R)
+  2. attr(R1) intersection attr(R2) not equal phi
+  3. attr(R1) intersection attr(R2) -> attr(R1) or
+     attr(R1) intersection attr(R2) -> attr(R2)
+
+### Dependency Preserving Decomposition
+
+- If a table R having FD set F, is decomposed into two tables R1 and R2 having FD set F1 and F2 then
+  F1 subset of F+
+  F2 subset of F+
+  (F1UF2)+ = F+
+
+---
+
+## 8. SQL
+
+### Query Languages
+
+- After Designing of database. ie. ER Diagram design then converting it into relational model followed by normalization and indexing now task is how to store, retrieve and modify data in database.
+
+- **Query Languages** - Languages in which user request some information from databse.
+
+- **Procedural Query Language** - Here user instruct the system to perform sequence of operations in order to produre desired result. User tell what data to be retrieved and how to be retrieved.
+
+- **Non-Procedural Query Language** - Here user descrive the desired information without giving the specific procedure for obtaining that information.
+
+### Relational Algebra
+
+- In practice we use RDBMS(Practical Implementation of relational model)
+- SQL is used to write query on it.
+- So Relational Model is a conceptual/theoritical framework and RDBMS is it implementaion.
+- Relational Algebra(Procedural) and Relational Calculus (non-procedural) are mathematical system are query language used on Relational model.
+
+Query Language - Procedural and Non-Procedural
+Procedural - Relational Algebra
+Non-Procedural - Relational Calculus
+Relational Algebra and Relational Calculus = SQL
+
+|                  |           |
+| ---------------- | --------- |
+| Relational Model | RDBMS     |
+| RA, RC           | SQL       |
+| Algo             | Code      |
+| Conceptual       | Reality   |
+| Theoretical      | Practical |
+
+### Relational Algebra
+
+- Relational Algebra is one of the two formal query language associated with relational model.
+- Like any other mathematical system is defines a number of operators and use relational (tables) as operands.
+- Every operator in relation algebra take one or two relations are input argument and generate a single relation as a result without a name.
+- RA do not consider duplicacy as it's based on set theory.
+- In each query we describes a step by step procedure for computing the desired result so procedural QL.
+- No use of English Keywords.
+
+| Basic/Fundamental Operators | Derived Operators  |
+| --------------------------- | ------------------ |
+| Select ( σ )                | Natural Join ( ⋈ ) |
+| Project ( π )               | Intersection ( ∩ ) |
+| Union ( ∪ )                 | Division ( ÷ )     |
+| Set Diffrence ( - )         |                    |
+| Cartesian Product ( X )     |                    |
+| Rename ( ρ )                |                    |
+
+### SELECT Operator ( σ )
+
+- Select is a unary operator so can take only one table at a time.
+- It is a fundamental Operator.
+- Main idea of select is to find these tuples/rows in a relation which satisfied given condition.
+- Syntax => σ condition/predicate^(table name)
+- It is same function as of where clause in SQL.
+- min number of selected is 0.
+- max number of selected is all the tuples.
+
+### Project Operator ( π )
+
+- Unary Operator, take one table at a time.
+- Fundamental Operator
+- Main idea of project is select desired column
+- Syntax π column name ^ (table name)
+- It works as select clause of SQL
+
+### Union Intersection and set difference
+
+### Cross Product and Cartesian Product
+
+- Binary Operator, takes two tables at a time.
+- Funadamental Operator
+- Allow us to combine information between two tables.
+- |R1| = m, |R2| = n, |R1xR2| = mn
+- R1(A,B,C), R2(C,D,F), R1xR2(A,B,C,D,F) no.of column
+
+---
+
+### Introduction to SQL
+
+- Number of query languages are in use/around 50 are popular, both commercially and research.
+- The most popular and widely accepted query language is SQL (Structures Query Language)
+- SQL is domain specific not general purpose used in design and management of data held in RDBMS.
+- Can do much more than just query a database can define structure of data, modify data in data base specify securiity constraints and number of other tasks.
+- Based on relational algebra and tuple relational calculus.
+- IBM developed original version of SQL called SEQUEL in Project R in early 1970
+- Name later changed to SQL becuase of trademark issues.
+- In 1986, American National Standard Institute (ANSI) and ISO published SQL Standard called SQL-86
+- Next version, 1989, 1992, 1999, 2003, 2006, 2008, 2011 and most recently 2016.
+
+- **Data Definition Language** - provide commands for defining relation schemas, deleting relation and modifying relation schemas.
+
+  - **Integrity** - Provide commands for integrity constraints on the data stored in DB. eg. Primary key cannot be null, foreign key reference.
+  - **View definition** - command for defining views. eg. sorting the result according to same attribute.
+  - **Authorization** - commands for access right. eg. read only, R/W grants etc.
+
+- **Data Manipulation Language** - provides the ability to query information from the DB, and insert tuple, delete tuples, and modify tuples in the database eg. insert, delete commands, etc.
+  - **Transaction Control** - SQL includes commands for specifying the beginning and ending of transactions. eg. commit, rollback, squ points, etc.
+  - **Embedded SQL and Dynamic SQL** - how SQL statemnet can be embedded with in general purpose programming language such as C, C++, Java, etc.
+
+### Data Retrieval
+
+- for data retrival in SQL i/p and o/p both are relations.
+- no. of relation i/p to query will be at least are but o/p will always be a singel relation without any name unless specified.
+- Basic structure of SQL query consist of these clauses. (SELECT FROM WHERE)
+- It should noted that SELECT and FROM mandatory and if not required, then not necessary to write WHERE
+- SQL in general is not case sensitive
+- SQL allows duplication in a i/p relation as well as in the result of SQL expression.
+
+### SELECT Clause
+
+- is used to pick columns required in result of the query out of all columns in i/p relation.
+- order in which column are represented in the select closure will be same in which column will appear in the result.
+- if all columns are required then \* can be used.
+- may also contains arithmetic expression involving operators like +, -, /, \* etc however it does not change to the database.
+- DISTINCT keyword to remove duplicacy
+
+### SELECT with WHERE
+
+- where clause in SQL is used to specify conditions/predicates.
+- where closure can have expression involving comparisons operator <,<=,>,>=,=,<> etc.
+- SQL allows use of logical connectives and, or, not etc.
+- allows 'between' comparision operator to simplify where clause which specify >= to some value and <= to some other value.
+- similarly can use 'not between'.
+
+### Set Operations
+
+- SQL provides set operations Union, Intersect, except/minus/set difference which correspons to the mathematical set operations.
+- Here union, intersect, minus automatically eliminates duplicate tuple.
+- if we want to retain duplicate tuple we write [all' after operators.
+- set operations are only applicable between two relations if they are compatible ie. having same number of columns with correspondingly same domain.
+
+### Queries on multiple relations(Cartesian Product)
+
+- so for we have worked on simple query requires only one relation.
+- Queries often need more than one realtion for information and to do that are simole idea is cartesian product.
+- CP combine two relation into one by Concatenation each tuple of first relation with every possible tuple of second relation.
+- CP is commutative in nature so order does not matter
+- if same attribute name appears as in both relation, we prefix the name of relation from which attribute originally comes.
+
+### Queries on multiple relations (Natural Join)
+
+- Basically natural join work same as cartesian product but consider only three pair of tuples with the same value on these attribute that appear in the schemas of both relation.
+- Notice that common attribute comes only once and prev is also not required as we allow only same value
+- commutative in nature.
+- may lead to data loss if attributes to be match have different names,or some values occur only in one table.
+
+### Join/Inner Join
+
+- is an operation which works same as cartesian product if used alone.
+- but if join is used with keyword using it provides additional functionality.
+- provides ability to explicitly share column which must be used by join for comparision and removal of redundant tuples.
+- if there are more than one column common between two tables but we do not want each of them to be considered, then we specify which are to be considred by using operator.
+
+### Join with on
+
+- In SQL join with 'on' allows us to use a general pedicate over the relations being joined.
+- this predicate is written like a where predicate except for the use of the keyowrd on rather than where
+- like CP here we must specify which attribute must be matched.
+- more powerful as predicate of where can also be written with on
+- on condition can express any SQL predicate
+- it imoproves the readability of the query.
+- in case of outer join on condition behave differently from where
+
+### Outer join
+
+- One problem with natural join is only those value that appear in both relation will manage to reach find table.
+- but if some data is explicitly in table one as table two then that will be lost.
+- there are three from of outer join
+  - left outer join (left join)
+  - right outer join (right join)
+  - full outer join (full join/ complete join)
+
+### Rename Operation (as)
+
+- SQL aliases are used to give table or column of a table or column of a table a temporary name.
+- Aliases only exists for the duration of the query.
+- Uses as clause can appear both in select and from clause.
+- often used to name more readable meaning full as smaller
+- used for comparing a table with it self.
+- new temporary name of table know as table aliases/corelation varibles/tuple variable.
+- Just creates a new copy but do not change anything in database.
+
+### String Operations
+
+- SQL specifies strings by enclosing them in single quotes 'Knowledge Gate'
+- Equality operation on string may or may not be case sensitive. eg. most of the Db system are case sensitive but MySQL and SQL server are not we can change the behaviour in settings.
+- Number of operations are available on string such as conatenation substrings finding length of strings converting string to uppercase or lowercase, etc
+- exact set of operations may change from system to system.
+- pattern matching can be performed on a string using 'like' operator.
+- two special character -> Percent(): match any substring
+  -> underscore(): matches with any character
+- Pattern matching is case sensitive
+- if single quote is part of a string, it must be specified by two singel quote
+- for pattern which includs pattern we use escape character just before the special character.
+
+### Ordering the display of tuple
+
+- SQL offer the user some control over the order in which tuples in a relation are displayed
+- OrderBy clause causes the tuple in the result of a query to appear in sorted order
+- By default order by clause lists items in ascening order we may specify asc for ascending order and desc for descending order.
+- ordering can be performed on multiple attribute ie. if there is a tie on the first attribute we sorted according to second attribute.
