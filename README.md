@@ -578,3 +578,210 @@ noOfBlockAccessRequired = ceil(log(n));
 - called secondary because normally one indexing is already done.
 - example of dense indexing = [ no of entry in index file = no of entry in main file]
 - no of block access = ceil(logn)+1
+
+## 9. Transaction and Concurrency Control
+
+### What is Transaction
+
+- A transaction is a set of instruction which performs a logical unit of work that must be atomic in nature.
+
+### Transaction ACID properties
+
+1. Atomicity => Transaction Management Component takes care of atomicity
+2. Consistency - If a database is consistent before transaction then it must remain consistence after transaction
+3. Isolation
+4. Durability => Recovery Management Component takes care of durability
+
+### Transaction States
+
+1. Active State
+2. Failed State
+3. Partially Commited State
+4. Commited State
+5. Aborted State
+6. Terminated State
+
+Compensating Transaction
+
+### Advantage of Concurrency
+
+1. Waiting Time
+2. Response Time
+3. Resource Utilization
+4. Efficiency
+
+### Dirty Read Problem
+
+### Unrepeatable Read Problem
+
+### Phantom Read Problem
+
+### Lost Update Problem (Write-Write Conflict)
+
+- (blind write)
+
+### Serial Schedule and Non-Serial Schedule
+
+### Conflict Serializability
+
+### View Serializability
+
+- must be blind write
+
+1. Initial Read
+2. Final Write
+3. Intermediate Read
+
+### Recoverable Schedule
+
+### Cascadless Schedule
+
+### Strict Schedule
+
+## 10. Concurrency Control Technique
+
+- Till now we already know how to check weather a schedule will maintain the consitency of DB as not (CS,VS,Recovarability,Cascadless,Strict,etc)
+- Now will study protocols that guarantee to generate schedule which satisfy these properties speicifically(CS)
+- for CS we must avoid conflicting instructions we remember three condition of conflicting instruction
+- Actual Problem is different transaction trying to access data at same time.
+- How to approach conflict serializability
+  - Time Stamping Protocol
+  - Lock based protocol
+    - 2PL(Basic,Conservative,Strict,Rigorous)
+    - Graph based
+  - Validation Protocol
+- Goals (Concurrency,Propeties,time,logic)
+
+### Time Stamp Ordering Protocol
+
+- Basic Idea of Time Stamping is to decide the order between the transactions before that enters into the system so that in case of conflict during execution we can resolve the conflict using ordering.
+- The reason we call timestamp not stamp, because for stamping we use the value of system clock as it will always be unique or never respect itself.
+- Two ideas of time stamping
+  - Time stamp with transaction - with each transaction ti we associate a time stamp denoted by TS(ti).
+  - it is the value of the system clock when a transaction enters into the system so if a new transaction tj enters after ti then, TS(ti)< TS(tj) always unique will remain fixed through the execution.
+  - also determine serializability order if TS(ti) < TS(tj) then system ensure that in the resultant Conflict Serializable Schedule ti will execute fast before tj.
+- Time stamp with data item - for each data item Q, protocal maintains two time stamp.
+  - Write time stamp - It is the largest time stamp of any transaction that executed write successfully.
+  - Read time stamp - It is the largest time stamp of any transaction that executed read successfully.
+
+### Ti request for Read (Q)
+
+- if TS(ti) < WTS(Q), means Ti needs to read a value of Q that was already overwritten. Hence, request must be rejected & Ti must rollback.
+- if TS(ti) >= WTS(Q), operation can be allowed and RTS(Q) will be max(RTS(Q),TS(ti))
+
+### Ti request for Write (Q)
+
+- if TS(ti) < RTS(Q), means value of Q that Ti is producing was needed previously and the system assumed that the value would never be produced hence reject and roll back.
+- if TS(ti) < WTS(Q), Ti is attempting to write the absolute value of Q reject and Rollback otherwise ok. WTS(Q) = max(WTS(Q),TS(ti))
+
+### Properties of Time Stamping Protocol
+
+- It ensure conflict serializability.
+- It ensure view Serializability.
+- Possibility of dirty read no restriction on commit, irrecoverable schedules and cascading rollbacks are possible.
+- here Either we allow or reject so no idea of deadblock.
+- many suffer from starvation. relatively slow.
+
+### Thomas Write Rule:
+
+- Modifies time stamping protocol to make some improvements and may generate these scheduler that are VS but not CS and provide better concurrency.
+- it modifies time stamping protocol in absolute write case when Ti request write (Q) if TS(ti) < WTS(Q)
+- here Ti attempts to write absolute value of Q rather the rolling back Ti, write operator is ignored.
+
+### Lock Based Protocol
+
+- To achieve consistency isolation is the most important idea, locking is simplest idea to achieve isolation ie. first obtain a lock on a data item performed a desired operation and then unlock it.
+- to provide better concurrency along with isolation we use different modes of locks.
+  1. Shared Lock - denoted by lock-S(Q). transaction can perform Read operation, any other transaction can also obtain same lock on same data item at same time.
+  2. Exclusive Mode - denoted by lock-X(Q) transaction can perform both read/write operations, any other transaction can not obtained either shared/exclusive mode lock.
+
+### Properties of Lock Based Protocol
+
+1. if we do unlocking inconsistency will arise, if we do not unlock then concurrency will be poor.
+2. We require that transaction follow some set of rules for locking and unlocking of data eg. 2PL , graph based.
+3. We say a schedule is legal under a protocoll if it can be generated using the rules of the protocols.
+4. Not Conflict Serializable,irrecoverable, cascading rollbacks.
+
+### Two Phase Locking (2PL) Basic
+
+- this protocol requires that each transaction in a schedule will be two phased. growing phase and shrinking phase.
+- In growing phase transaction can only obtain locks but can not release any lock.
+- In shrinking phase transaction can only release locks but can not obtain any lock.
+- transaction can perform read/write operation both in growing/shrinking phase.
+- Ensure (CS,VS) the order of serializability is the order in which transaction reaches lock point.
+- May generate irrecoverable schedule and cascading rollback.
+- Do no ensure freedom from deadlock.
+
+### Two Phase Lock (Conservative/Static 2PL)
+
+- there is no growing phase transaction first will start from lock point.
+- if all locks are not available then transaction must release the lock acquired so far and wait.
+- shrinking phase works as usual and transaction can unlock any data item.
+- here we must have all the knowledge that what data items will be required during execution.
+- CS,VS indepedent from deadlock.
+- possiblity of irrecoverable schedule and cascading rollback.
+
+### Rigorous 2PL
+
+- it is an improvement over 2PL protocol where we try to ensure recoverability and cascade lessons.
+- Rigorous 2Pl requires that all the locks must be held until transaction commits. ie. there is no shrinking phase in the life of a transaction.
+- will ensure CS, VS, recoverabillity, cascadelessness.
+- suffer from deadlock and inefficiency.
+
+### Strict 2PL
+
+- It is an improvement over Rigorous 2PL.
+- In the shrinking phase unlocking of exclusive locks are not allowed but unlocking of shared locks can be done.
+- all the properties are same as that of rigourous 2PL, but it provide better concurrency.
+
+### Graph Based Protocol
+
+- if we wish to develop lock based protocol that are not based on 2PL, we need additional info that how each transaction will access the data.
+- there are various model that can give additional information each differing in the amount of info provided.
+- one idea is to have prior knowledge about the order in which the database items will be accessed.
+- we impose partial ordering => on set all data items D={d1,d2,d3,....dn} if di->dj, then any transaction occcuring both di and dj, must access di before dj.
+- Partial Ordering may be bacause logical or physical organization or only because of concurrency control.
+- After PO set of all data items D will know be viewed as directed acyclic graph called database graph.
+- For sake of simplicity, we follow two restrictions
+  - will study graph that are rooted tree.
+  - will use only exclusive mode locks.
+
+### Tree Protocol
+
+- Each transaction Ti can lock a data item Q with following rules:
+  1. First lock by Ti may be on any data item.
+  2. Subsequently a data item Q can be locked by Ti only if the parent of Q is currently locked by Ti.
+  3. Data item may be unlocked at any time.
+  4. Data item Q that has been locked and unlocked by Ti can not subsequently be relocked by Ti.
+
+### Properties of Tree Protocol
+
+- All schedules that are legal under the tree protocol are CS and VS.
+- Tree protocol ensure freedom from deadlock.
+- Tree protocol do not ensure Recoverability and Cascadlessness.
+- Early unlocking is possible which lead shortest waiting time on increase concurrency.
+- A transaction may have to take data items that it does not access lead to overhead waiting time and decrease in concurrency.
+- Transaction must know exactly what data item are to be accessed.
+- Recoverability and Cascadlessness can be provided by not unlocking before commit.
+
+### Deadlock handling
+
+- A system is in deadlock state if there exists a set of transaction such that every transaction in the set is waiting for another transaction in the set.
+- if there exists a set of waiting transaction T0,T1.....Tn-1 such that T0->T1, T1->T2 ..... Tn-1->T0 so none transaction can progress in such situation.
+- system must have a proper methods to dead with deadlocks otherwise
+  - In real time system it may lead to life and money.
+  - will reduce resource utilization and increase inefficiency.
+- there are two principle for dealing with deadlock problem.
+  - Prevention - which ensure that system will never enter a deadlock state.
+  - Detection and Recovery = allow system to enter into deadlock, then try to recover
+
+### Deadlock Prevention
+
+- To ensure no hold & wait, each transaction locks all the data item before it begins execution. eg C-2PL.
+- To ensure no cyclic wait, impose an ordering og all data item, and requires that a transaction look data item, only in the sequence consistent with ordering eg.tree protocol.
+  - it is difficult to predict what data items are required.
+  - data item utilization will be low.
+  - ordering of data item may be difficult or time taking to follow.
+- wait and Die (Non-premptive)
+- wound and wait (Premptive)
+- lock-timeouts
