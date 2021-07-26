@@ -13,14 +13,26 @@
 9. Transaction
 10. Concurrency Control
 
+---
+
 ## Basic Fundamentals
 
-### Difference between Data Information Database
+### Difference between Data, Information, Database
 
 1. Data - Raw and Isolated facts about an entity (recorded). eg. text, audio, video, image, map, etc.
 2. Information - Processed, meaningful, usable data
-3. Database - Collection of similar / related data
-4. DBMS - Software used to create, manipulate and delete data
+3. Database - Collection of similar / related data - Database: A database is a collection of related data which represents some aspect of the real world. A database system is designed to be built and populated with data for a certain task.
+4. DBMS - Software used to create, manipulate and delete data - Database Management System (DBMS) is a software for storing and retrieving users' data while considering appropriate security measures. It consists of a group of programs which manipulate the database. The DBMS accepts the request for data from an application and instructs the operating system to provide the specific data. In large systems, a DBMS helps users and other third-party software to store and retrieve data.
+
+Database management systems were developed to handle the following difficulties of typical File-processing systems supported by conventional operating systems.
+
+1. Data redundancy and inconsistency
+2. Difficulty in accessing data
+3. Data isolation – multiple files and formats
+4. Integrity problems
+5. Atomicity of updates
+6. Concurrent access by multiple users
+7. Security problems
 
 ### Disadvantage of File System
 
